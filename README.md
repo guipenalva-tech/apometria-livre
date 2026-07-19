@@ -18,9 +18,12 @@ Site bilíngue (PT-BR ⇄ ES) que educa o público sobre o que a Apometria **é*
 
 ## Site
 
-- **Web:** publicado via GitHub Pages a partir de `site/` (workflow em `.github/workflows/pages.yml`)
-- **Hospedagem própria:** ver o passo a passo em [`docs/09-deploy-hostinger.md`](docs/09-deploy-hostinger.md)
+- **Web:** https://guipenalva-tech.github.io/apometria-livre/ (GitHub Pages, branch `gh-pages`)
+- **Publicar atualizações:** `sh scripts/publicar_pages.sh` (regenera a branch `gh-pages` a partir de `site/` e envia)
+- **Hospedagem própria (domínio definitivo):** ver o passo a passo em [`docs/09-deploy-hostinger.md`](docs/09-deploy-hostinger.md)
 - Rodar localmente: `cd site && python3 -m http.server 8765` → http://localhost:8765
+
+> `scripts/pages.yml.exemplo` contém um workflow de Actions equivalente — para usá-lo, é preciso reautenticar o `gh` com escopo `workflow` (`gh auth refresh -s workflow`) e movê-lo para `.github/workflows/pages.yml`.
 
 ## Licença e uso
 
