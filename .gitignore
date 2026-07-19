@@ -1,0 +1,10 @@
+# Sistema
+.DS_Store
+**/.DS_Store
+
+# Pacote de deploy gerado (recriável com: cd site && zip -r ../apometria-livre-site.zip .)
+apometria-livre-site.zip
+
+# Python
+__pycache__/
+*.pyc

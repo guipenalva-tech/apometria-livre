@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 290" role="img" aria-label="Logomarca: Caridade é Apometria">
+  <title>Caridade é Apometria</title>
+  <defs>
+    <linearGradient id="corCircular" gradientUnits="userSpaceOnUse" x1="376" y1="0" x2="450" y2="0">
+      <stop offset="0%"  stop-color="#e5383b"/>
+      <stop offset="14%" stop-color="#f3722c"/>
+      <stop offset="28%" stop-color="#f9c74f"/>
+      <stop offset="42%" stop-color="#90be6d"/>
+      <stop offset="57%" stop-color="#2a9d8f"/>
+      <stop offset="71%" stop-color="#277da1"/>
+      <stop offset="85%" stop-color="#5e60ce"/>
+      <stop offset="100%" stop-color="#b5179e"/>
+    </linearGradient>
+    <filter id="sombraSuave" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3.5" flood-color="#1b2a52" flood-opacity="0.16"/>
+    </filter>
+  </defs>
+
+  <!-- Linha 1: Caridade (sans-serif) + é (cursiva, gradiente cromático) -->
+  <text x="365" y="120" text-anchor="end" font-family="'Poppins','Helvetica Neue',Arial,sans-serif" font-weight="700" font-size="56" fill="#1b2a52" letter-spacing="0.5" filter="url(#sombraSuave)">Caridade</text>
+  <text x="378" y="138" text-anchor="start" font-family="'Brush Script MT','Segoe Script','Apple Chancery','Snell Roundhand',cursive" font-weight="400" font-size="150" fill="url(#corCircular)" filter="url(#sombraSuave)">é</text>
+
+  <!-- Flourish dourado conectando as duas linhas -->
+  <path d="M 140 152 Q 320 180 500 152" fill="none" stroke="#c9992e" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="140" cy="152" r="4.5" fill="#c9992e"/>
+  <circle cx="500" cy="152" r="4.5" fill="#c9992e"/>
+
+  <!-- Linha 2: APOMETRIA (serifada) -->
+  <text x="320" y="238" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-weight="700" font-size="52" fill="#1b2a52" letter-spacing="7">APOMETRIA</text>
+</svg>

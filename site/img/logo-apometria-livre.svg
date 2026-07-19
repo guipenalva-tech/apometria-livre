@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 260" role="img" aria-label="Apometria Livre — Caridade é Apometria">
+  <title>Apometria Livre</title>
+  <text x="320" y="108" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-weight="700" font-size="62" fill="#1b2a52" letter-spacing="5">APOMETRIA</text>
+  <line x1="205" y1="132" x2="435" y2="132" stroke="#c9992e" stroke-width="2"/>
+  <circle cx="320" cy="132" r="4" fill="#c9992e"/>
+  <text x="320" y="182" text-anchor="middle" font-family="'Poppins','Helvetica Neue',Arial,sans-serif" font-weight="700" font-size="38" fill="#c9992e" letter-spacing="13">LIVRE</text>
+  <text x="320" y="224" text-anchor="middle" font-family="'Brush Script MT','Segoe Script','Apple Chancery',cursive" font-size="22" fill="#5a6172">caridade é apometria</text>
+</svg>
