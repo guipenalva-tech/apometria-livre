@@ -31,6 +31,7 @@ Não existe hoje um selo de confiança nem uma associação unificadora que perm
 | [docs/07-marca-e-naming.md](docs/07-marca-e-naming.md) | Estratégia de nome e marca: por que "Apometria Livre", alternativas consideradas, arquitetura de marca |
 | [docs/08-campanha-documentario.md](docs/08-campanha-documentario.md) | Campanha de financiamento coletivo do documentário "Apometria: Raízes e Frutos Espiritualistas": sinopse, orçamento, recompensas, plataforma (Catarse) |
 | [docs/09-deploy-hostinger.md](docs/09-deploy-hostinger.md) | Passo a passo de deploy em produção na Hostinger (FTP/File Manager, SSL, .htaccess, SEO) |
+| [docs/10-mapeamento-nacional.md](docs/10-mapeamento-nacional.md) | Mapeamento nacional das casas de Apometria por estado/cidade — documento de trabalho para verificação |
 | [site/](site/) | Website pronto para produção (HTML/CSS/JS puro, bilíngue PT⇄ES) |
 
 ## Decisões-chave
