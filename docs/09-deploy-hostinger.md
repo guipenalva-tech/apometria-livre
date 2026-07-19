@@ -26,6 +26,36 @@ No hPanel: **Sites** → seu domínio → **SSL** → ative o certificado Let's 
 
 ## Passo 3 — Envie os arquivos
 
+> **Recomendado: use a Opção C (Git automático).** Ela conecta o repositório privado à Hostinger e publica sozinha a cada `sh scripts/publicar.sh` — a mesma conveniência do GitHub Pages, mas no seu domínio e com o código privado. As opções A e B continuam válidas como alternativa manual.
+
+### Opção C — Git com deploy automático (a melhor opção)
+
+A Hostinger tem integração nativa com o GitHub via OAuth — **funciona com repositório privado** (você autoriza o app da Hostinger na sua conta, não precisa de chave SSH).
+
+**Requisito:** plano Premium ou Business (o Git não está disponível no plano mais básico nem no Website Builder/Horizons).
+
+1. No hPanel: **Sites** → seu site → **Painel** → **Avançado** → **Git**.
+2. Clique em **"Continuar com GitHub"** → autorize a extensão da Hostinger na sua conta.
+3. Configure:
+   - **Repositório:** `guipenalva-tech/apometria-livre`
+   - **Branch:** `gh-pages` ⚠️ *(não use `main`!)*
+   - **Diretório:** `public_html`
+4. Clique em **Deploy**.
+
+> **Por que a branch `gh-pages` e não a `main`?** A `main` contém o projeto inteiro — `docs/`, `scripts/`, `PLAN.md` — que iriam parar dentro do `public_html` e ficariam acessíveis publicamente. A branch `gh-pages` é gerada automaticamente pelo `scripts/publicar.sh` e contém **apenas** o conteúdo de `site/` na raiz (index.html, css/, img/, downloads/ e o `.htaccess`) — exatamente o que deve ir para o servidor.
+
+**A partir daí, publicar é um comando:**
+
+```bash
+cd /Users/guip.mpro/APOMETRIA
+git add -A && git commit -m "sua mensagem"
+sh scripts/publicar.sh
+```
+
+A Hostinger detecta o push na branch `gh-pages` e republica o site em ~1 minuto. Você acompanha o histórico de deploys (commit e horário) na mesma tela do Git no hPanel, e pode forçar um **Redeploy** manual se precisar.
+
+> Se o deploy automático não disparar sozinho, a tela do Git mostra uma **URL de webhook** — copie e cole em: GitHub → repositório → Settings → Webhooks → Add webhook, com o evento "push". Isso torna o gatilho imediato.
+
 Você só precisa do conteúdo da pasta **`site/`** — não envie `docs/`, `scripts/` nem `PLAN.md`, que são materiais internos do projeto, não do site público.
 
 ### Opção A — File Manager (mais simples, sem instalar nada)

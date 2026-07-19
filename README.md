@@ -18,12 +18,13 @@ Site bilíngue (PT-BR ⇄ ES) que educa o público sobre o que a Apometria **é*
 
 ## Site
 
-- **Web:** https://guipenalva-tech.github.io/apometria-livre/ (GitHub Pages, branch `gh-pages`)
-- **Publicar atualizações:** `sh scripts/publicar_pages.sh` (regenera a branch `gh-pages` a partir de `site/` e envia)
-- **Hospedagem própria (domínio definitivo):** ver o passo a passo em [`docs/09-deploy-hostinger.md`](docs/09-deploy-hostinger.md)
-- Rodar localmente: `cd site && python3 -m http.server 8765` → http://localhost:8765
+- **Publicar:** `sh scripts/publicar.sh` — regenera a branch **`gh-pages`** (só o conteúdo de `site/` na raiz) e envia. A Hostinger republica sozinha em ~1 min.
+- **Hospedagem:** Hostinger com deploy automático via Git — configuração em [`docs/09-deploy-hostinger.md`](docs/09-deploy-hostinger.md) (Opção C)
+- **Rodar localmente:** `cd site && python3 -m http.server 8765` → http://localhost:8765
 
-> `scripts/pages.yml.exemplo` contém um workflow de Actions equivalente — para usá-lo, é preciso reautenticar o `gh` com escopo `workflow` (`gh auth refresh -s workflow`) e movê-lo para `.github/workflows/pages.yml`.
+> **Repositório privado + GitHub Pages não combinam** no plano gratuito do GitHub: Pages só funciona em repositório público. Como este é privado, o site público vive na Hostinger. Se um dia o repositório voltar a ser público, a branch `gh-pages` já está no formato certo para o Pages.
+>
+> `scripts/pages.yml.exemplo` contém um workflow de Actions equivalente — exige `gh auth refresh -s workflow` e mover para `.github/workflows/pages.yml`.
 
 ## Licença e uso
 
