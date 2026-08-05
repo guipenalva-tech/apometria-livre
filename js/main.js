@@ -188,6 +188,132 @@
       });
       selCidade.addEventListener('change', aplicarFiltros);
       busca.addEventListener('input', aplicarFiltros);
+
+      // ===== Melhorias: busca, geolocalização, mapa e gráfico =====
+
+      // Contagem de casas por UF — a partir dos próprios cards (sempre em sincronia)
+      var CONTAGEM = {};
+      cartoes.forEach(function (c) {
+        var u = c.dataset.estado;
+        if (u) CONTAGEM[u] = (CONTAGEM[u] || 0) + 1;
+      });
+
+      function irParaResultados() {
+        var alvo = document.querySelector('.filtro-nav');
+        if (alvo) alvo.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      function marcarTile() {
+        for (var uf in tiles) {
+          if (uf === selEstado.value) tiles[uf].classList.add('ativo');
+          else tiles[uf].classList.remove('ativo');
+        }
+      }
+      function selecionarEstado(uf) {
+        selEstado.value = uf;
+        reconstruirOpcoes();
+        aplicarFiltros();
+        marcarTile();
+      }
+
+      // 1) Botão de confirmar busca + tecla Enter
+      var btnBuscar = document.querySelector('#btn-buscar');
+      if (btnBuscar) btnBuscar.addEventListener('click', aplicarFiltros);
+      busca.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') { e.preventDefault(); aplicarFiltros(); irParaResultados(); }
+      });
+
+      // 2) Geolocalização → estado mais próximo (centroides das 27 UFs)
+      var UF_COORD = { AC:[-8.77,-70.55], AL:[-9.62,-36.82], AP:[1.41,-51.77], AM:[-3.47,-62.21],
+        BA:[-13.29,-41.71], CE:[-5.20,-39.53], DF:[-15.83,-47.86], ES:[-19.19,-40.34], GO:[-15.98,-49.86],
+        MA:[-5.42,-45.44], MT:[-12.64,-55.42], MS:[-20.51,-54.54], MG:[-18.10,-44.38], PA:[-3.79,-52.48],
+        PB:[-7.28,-36.72], PR:[-24.89,-51.55], PE:[-8.38,-37.86], PI:[-6.60,-42.28], RJ:[-22.25,-42.66],
+        RN:[-5.81,-36.59], RS:[-30.17,-53.50], RO:[-10.83,-63.34], RR:[1.99,-61.33], SC:[-27.45,-50.95],
+        SP:[-22.19,-48.79], SE:[-10.57,-37.45], TO:[-9.46,-48.26] };
+      function ufMaisProxima(lat, lng) {
+        var melhor = null, dmin = Infinity;
+        for (var uf in UF_COORD) {
+          var d = Math.pow(lat - UF_COORD[uf][0], 2) + Math.pow(lng - UF_COORD[uf][1], 2);
+          if (d < dmin) { dmin = d; melhor = uf; }
+        }
+        return melhor;
+      }
+      var btnGeo = document.querySelector('#btn-geo');
+      var geoMsg = document.querySelector('#geo-msg');
+      if (btnGeo && geoMsg) {
+        btnGeo.addEventListener('click', function () {
+          var es = document.documentElement.lang === 'es';
+          if (!navigator.geolocation) {
+            geoMsg.textContent = es ? 'Tu navegador no permite geolocalización.' : 'Seu navegador não permite geolocalização.';
+            return;
+          }
+          geoMsg.textContent = es ? 'Localizando…' : 'Localizando…';
+          navigator.geolocation.getCurrentPosition(function (pos) {
+            var uf = ufMaisProxima(pos.coords.latitude, pos.coords.longitude);
+            selecionarEstado(uf);
+            var n = CONTAGEM[uf] || 0;
+            geoMsg.textContent = (UFS[uf] || uf) + ' — ' + n + (es ? ' casa(s) cerca.' : ' casa(s) por perto.');
+            irParaResultados();
+          }, function () {
+            geoMsg.textContent = es ? 'No fue posible obtener tu ubicación.' : 'Não foi possível obter sua localização.';
+          });
+        });
+      }
+
+      // 3) Mapa de tiles do Brasil (posição geográfica aproximada de cada UF)
+      var POS = { RR:[0,2], AP:[0,3], AM:[1,1], PA:[1,2], MA:[1,3], CE:[1,4], RN:[1,5],
+        AC:[2,0], RO:[2,1], TO:[2,3], PI:[2,4], PB:[2,5],
+        MT:[3,2], GO:[3,3], BA:[3,4], PE:[3,5], AL:[3,6],
+        MS:[4,2], DF:[4,3], MG:[4,4], SE:[4,5],
+        SP:[5,3], RJ:[5,4], ES:[5,5],
+        PR:[6,2], SC:[7,1], RS:[8,0] };
+      function classeCor(n) {
+        if (!n) return '';
+        if (n <= 2) return 'c1';
+        if (n <= 4) return 'c2';
+        if (n <= 8) return 'c3';
+        return 'c4';
+      }
+      var tiles = {};
+      var mapaEl = document.querySelector('#mapa-brasil');
+      if (mapaEl) {
+        var maxRow = 0, uf2;
+        for (uf2 in POS) maxRow = Math.max(maxRow, POS[uf2][0]);
+        mapaEl.style.gridTemplateRows = 'repeat(' + (maxRow + 1) + ', 1fr)';
+        Object.keys(POS).forEach(function (uf) {
+          var n = CONTAGEM[uf] || 0;
+          var b = document.createElement('button');
+          b.type = 'button';
+          b.className = 'uf-tile ' + classeCor(n);
+          b.style.gridColumn = String(POS[uf][1] + 1);
+          b.style.gridRow = String(POS[uf][0] + 1);
+          b.title = (UFS[uf] || uf) + ' — ' + n + ' casa(s)';
+          b.innerHTML = '<span class="uf-sigla">' + uf + '</span><span class="uf-num">' + n + '</span>';
+          b.addEventListener('click', function () { selecionarEstado(uf); irParaResultados(); });
+          mapaEl.appendChild(b);
+          tiles[uf] = b;
+        });
+      }
+      selEstado.addEventListener('change', marcarTile);
+
+      // 4) Gráfico de barras — casas por estado (ordenado do maior para o menor)
+      var graf = document.querySelector('#grafico-barras');
+      if (graf) {
+        var ordenado = Object.keys(CONTAGEM).sort(function (a, b) {
+          return CONTAGEM[b] - CONTAGEM[a] || (UFS[a] || a).localeCompare(UFS[b] || b, 'pt-BR');
+        });
+        var maxN = ordenado.length ? CONTAGEM[ordenado[0]] : 1;
+        ordenado.forEach(function (uf) {
+          var n = CONTAGEM[uf];
+          var linha = document.createElement('div');
+          linha.className = 'barra-linha';
+          linha.innerHTML =
+            '<span class="barra-uf" style="cursor:pointer">' + (UFS[uf] || uf) + '</span>' +
+            '<div class="barra-trilho"><div class="barra-preenchida" style="width:' + Math.round(n / maxN * 100) + '%"></div></div>' +
+            '<span class="barra-valor">' + n + '</span>';
+          linha.querySelector('.barra-uf').addEventListener('click', function () { selecionarEstado(uf); irParaResultados(); });
+          graf.appendChild(linha);
+        });
+      }
     }
 
     // Modal de participação — qualquer botão [data-abre-modal="id"] abre o dialog
