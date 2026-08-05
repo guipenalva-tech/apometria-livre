@@ -137,6 +137,22 @@ section.bloco.alt { background: var(--branco); }
 .bloco .linha-ouro { width: 64px; height: 4px; background: var(--dourado); border-radius: 2px; margin: 0 0 28px; }
 .sub-secao { font-size: 1.4rem; margin-top: 44px; margin-bottom: 6px; }
 
+/* ---------- Sub-navegação de seções (âncoras na página) ---------- */
+.sub-nav {
+  position: sticky; top: 67px; z-index: 40;
+  display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;
+  background: rgba(255,255,255,0.96); border-bottom: 1px solid #e5ddc8;
+  padding: 12px 16px; backdrop-filter: saturate(1.2) blur(2px);
+}
+.sub-nav a {
+  font-size: 0.9rem; color: var(--azul-800); text-decoration: none; white-space: nowrap;
+  padding: 6px 15px; border-radius: 20px; background: var(--creme); border: 1px solid #e5ddc8;
+}
+.sub-nav a:hover { background: var(--dourado-claro); color: var(--azul-900); border-color: var(--dourado-claro); }
+/* âncoras não ficam escondidas sob cabeçalho + sub-nav fixos */
+section[id] { scroll-margin-top: 128px; }
+@media (max-width: 1060px) { section[id] { scroll-margin-top: 150px; } }
+
 /* ---------- Guia de Preces (accordion nativo) ---------- */
 .lista-preces { max-width: 760px; margin: 8px auto 0; text-align: left; }
 .prece {
