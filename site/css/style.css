@@ -135,6 +135,7 @@ section.bloco { padding: 64px 0; }
 section.bloco.alt { background: var(--branco); }
 .bloco h2 { font-size: 2rem; margin-bottom: 8px; }
 .bloco .linha-ouro { width: 64px; height: 4px; background: var(--dourado); border-radius: 2px; margin: 0 0 28px; }
+.sub-secao { font-size: 1.4rem; margin-top: 44px; margin-bottom: 6px; }
 .bloco p.intro { color: var(--texto-suave); max-width: 760px; margin-bottom: 24px; font-size: 1.05rem; }
 
 .grade { display: grid; gap: 22px; }
