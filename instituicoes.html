@@ -17,7 +17,7 @@
 <meta property="og:locale:alternate" content="es_ES">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://apometrialivre.org.br/img/og-image.jpg?v=2">
-<link rel="stylesheet" href="css/style.css?v=11">
+<link rel="stylesheet" href="css/style.css?v=12">
 <link rel="icon" href="img/selo-favicon.png?v=1" type="image/png">
 </head>
 <body>
@@ -51,12 +51,45 @@
   </p>
 </section>
 
+<!-- ==================== GRÁFICO POR ESTADO ==================== -->
+<section id="grafico-estados" class="bloco">
+  <div class="container" style="text-align:center;">
+    <h2 data-es="Casas por estado">Casas por estado</h2>
+    <div class="linha-ouro" style="margin-left:auto; margin-right:auto;"></div>
+    <p class="intro" style="margin-left:auto; margin-right:auto;" data-es="Consolidado de las casas mapeadas (recomendadas + en verificación) por estado brasileño.">
+      Consolidado das casas mapeadas (recomendadas + em verificação) por estado brasileiro.
+    </p>
+    <div class="grafico-barras" id="grafico-barras"></div>
+  </div>
+</section>
+
+<!-- ==================== MAPA NACIONAL ==================== -->
+<section id="mapa-nacional" class="bloco alt">
+  <div class="container" style="text-align:center;">
+    <h2 data-es="Mapa Interactivo">Mapa Interativo</h2>
+    <div class="linha-ouro" style="margin-left:auto; margin-right:auto;"></div>
+    <p class="intro" style="margin-left:auto; margin-right:auto;" data-es="Toca un estado para filtrar el Mapa Nacional de abajo. El color indica cuántas casas de Apometría hay mapeadas en cada estado.">
+      Toque em um estado para filtrar o Mapa Nacional abaixo. A cor indica quantas casas de Apometria estão mapeadas em cada estado.
+    </p>
+    <div class="mapa-brasil" id="mapa-brasil" role="group" aria-label="Mapa do Brasil por estado"></div>
+    <div class="mapa-legenda">
+      <span><i style="background:#eceff5;"></i> <span data-es="Sin casas aún">Sem casas ainda</span></span>
+      <span><i style="background:#f3e6c4;"></i> 1–2</span>
+      <span><i style="background:#e8c874;"></i> 3–4</span>
+      <span><i style="background:#d4a02a;"></i> 5–8</span>
+      <span><i style="background:#1b2a52;"></i> 9+</span>
+    </div>
+  </div>
+</section>
+
+
+
 <section class="bloco">
   <div class="container">
-    <h2 data-es="Porto Alegre — cuna de la Apometría">Porto Alegre — berço da Apometria</h2>
+    <h2 data-es="Mapa Nacional">Mapa Nacional</h2>
     <div class="linha-ouro"></div>
-    <p class="intro" data-es="La Apometría nació en Porto Alegre en 1965. Estas son las casas de la ciudad que atienden sin cobrar, comenzando por la casa madre.">
-      A Apometria nasceu em Porto Alegre em 1965. Estas são as casas da cidade que atendem sem cobrar, começando pela casa-mãe.
+    <p class="intro" data-es="Resultado del mapeo — todas las casas por estado y ciudad. Filtra con el mapa interactivo de arriba, o busca por nombre, barrio o ciudad en la barra de abajo.">
+      Resultado do mapeamento — todas as casas por estado e cidade. Filtre pelo Mapa Interativo acima, ou busque por nome, bairro ou cidade na barra abaixo.
     </p>
     <nav class="filtro-nav" aria-label="Filtrar casas por localização">
       <label for="filtro-pais" class="sr-oculto">País</label>
@@ -88,6 +121,11 @@
         <a class="btn btn-vazado" href="https://wa.me/5511944416611?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Apometria%20Livre." target="_blank" rel="noopener"><svg class='icn' aria-hidden='true'><use href='img/icones.svg#balao'/></svg> WhatsApp</a>
       </div>
     </div>
+
+    <h3 class="sub-secao" data-es="Porto Alegre — cuna de la Apometría">Porto Alegre — berço da Apometria</h3>
+    <p class="intro" data-es="La Apometría nació en Porto Alegre en 1965. Estas son las casas de la ciudad que atienden sin cobrar, comenzando por la casa madre.">
+      A Apometria nasceu em Porto Alegre em 1965. Estas são as casas da cidade que atendem sem cobrar, começando pela casa-mãe.
+    </p>
 
     <div class="grade c2">
       <div class="cartao inst-cartao" data-pais="Brasil" data-estado="RS" data-cidade="Porto Alegre">
@@ -677,37 +715,6 @@
       </div>
     </div>
 
-  </div>
-</section>
-
-<!-- ==================== MAPA NACIONAL ==================== -->
-<section id="mapa-nacional" class="bloco alt">
-  <div class="container" style="text-align:center;">
-    <h2 data-es="Mapa Nacional">Mapa Nacional</h2>
-    <div class="linha-ouro" style="margin-left:auto; margin-right:auto;"></div>
-    <p class="intro" style="margin-left:auto; margin-right:auto;" data-es="Toca un estado para filtrar las casas. El color indica cuántas casas de Apometría hay mapeadas en cada estado.">
-      Toque em um estado para filtrar as casas. A cor indica quantas casas de Apometria estão mapeadas em cada estado.
-    </p>
-    <div class="mapa-brasil" id="mapa-brasil" role="group" aria-label="Mapa do Brasil por estado"></div>
-    <div class="mapa-legenda">
-      <span><i style="background:#eceff5;"></i> <span data-es="Sin casas aún">Sem casas ainda</span></span>
-      <span><i style="background:#f3e6c4;"></i> 1–2</span>
-      <span><i style="background:#e8c874;"></i> 3–4</span>
-      <span><i style="background:#d4a02a;"></i> 5–8</span>
-      <span><i style="background:#1b2a52;"></i> 9+</span>
-    </div>
-  </div>
-</section>
-
-<!-- ==================== GRÁFICO POR ESTADO ==================== -->
-<section id="grafico-estados" class="bloco">
-  <div class="container" style="text-align:center;">
-    <h2 data-es="Casas por estado">Casas por estado</h2>
-    <div class="linha-ouro" style="margin-left:auto; margin-right:auto;"></div>
-    <p class="intro" style="margin-left:auto; margin-right:auto;" data-es="Consolidado de las casas mapeadas (recomendadas + en verificación) por estado brasileño.">
-      Consolidado das casas mapeadas (recomendadas + em verificação) por estado brasileiro.
-    </p>
-    <div class="grafico-barras" id="grafico-barras"></div>
   </div>
 </section>
 
