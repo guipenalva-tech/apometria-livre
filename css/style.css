@@ -136,6 +136,28 @@ section.bloco.alt { background: var(--branco); }
 .bloco h2 { font-size: 2rem; margin-bottom: 8px; }
 .bloco .linha-ouro { width: 64px; height: 4px; background: var(--dourado); border-radius: 2px; margin: 0 0 28px; }
 .sub-secao { font-size: 1.4rem; margin-top: 44px; margin-bottom: 6px; }
+
+/* ---------- Guia de Preces (accordion nativo) ---------- */
+.lista-preces { max-width: 760px; margin: 8px auto 0; text-align: left; }
+.prece {
+  background: var(--branco); border: 1px solid #e5ddc8; border-radius: var(--raio);
+  margin-bottom: 10px; overflow: hidden;
+}
+.prece > summary {
+  cursor: pointer; padding: 15px 20px; font-family: var(--serif); font-weight: bold;
+  color: var(--azul-800); font-size: 1.05rem; list-style: none; position: relative;
+  padding-right: 44px;
+}
+.prece > summary::-webkit-details-marker { display: none; }
+.prece > summary::after {
+  content: "+"; position: absolute; right: 18px; top: 50%; transform: translateY(-50%);
+  color: var(--dourado); font-size: 1.4rem; font-weight: bold; line-height: 1;
+}
+.prece[open] > summary::after { content: "–"; }
+.prece[open] > summary { border-bottom: 1px solid #eee6d4; }
+.prece-texto { padding: 8px 20px 20px; color: var(--texto); }
+.prece-texto p { margin-bottom: 12px; line-height: 1.75; }
+.fonte-preces { max-width: 760px; margin: 22px auto 0; font-size: 0.85rem; color: var(--texto-suave); font-style: italic; text-align: left; }
 .bloco p.intro { color: var(--texto-suave); max-width: 760px; margin-bottom: 24px; font-size: 1.05rem; }
 
 .grade { display: grid; gap: 22px; }
