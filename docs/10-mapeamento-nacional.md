@@ -153,9 +153,39 @@
 
 ---
 
-## Estados sem dados nos diretórios (buscar ativamente)
+## 2º lote — busca no Google + listas Wix/Padilla (adicionado ao site)
 
-BA, CE, ES, MA, AM, RO, RR, AC, AP, TO, AL, SE, RN, PB, PI — os diretórios não trazem casas nesses estados. Caminhos: federações espíritas estaduais, grupos de WhatsApp/Facebook da comunidade apométrica, e indicação das casas já verificadas (rede de confiança).
+Casas novas encontradas por busca dirigida por estado. Todas EM VERIFICAÇÃO no site.
+
+| Estado | Casa | Cidade | Observação |
+|---|---|---|---|
+| **MG** *(novo)* | Centro Espírita Mateus e Tomaz — "Casa de Apometria" | Belo Horizonte | Rua Jacuípe 160, Concórdia · (31) 3442-5919 |
+| **MG** | Centro Espírita São Sebastião | Belo Horizonte | Rua Geraldo Menezes Soares 500, Sagrada Família · (31) 98840-0064 · tem aula de Apometria |
+| **MG** | Grupo Espírita Apométrico Despertar de Luz | Uberlândia | endereço a confirmar |
+| **PB** *(estado novo)* | Grupo Assistencial Maria de Magdala (GAMM) | João Pessoa | endereço a confirmar |
+| **RN** *(estado novo)* | GOIM — Grupo de Oração Irmã Meimei | Natal | endereço a confirmar |
+| **PA** | Associação Espírita Osvaldo Santos | Belém | endereço a confirmar |
+| **SP** | GATE — Grupo Apométrico de Tratamento Espiritual | Jundiaí | Rua Dr. Cândido Mojola 299 · **tratamento gratuito confirmado no site** |
+| **SP** ⚠️ | FEAL — Fraternidade Espiritual André Luiz | São Paulo (Lapa) | Rua César Augusto 81 · pratica Apometria, **mas tem cursos pagos — verificar se o atendimento é gratuito** |
+| **SP** ⚠️ | AFA — Apometria Francisco de Assis | São Paulo (Lapa) | Rua Sacadura Cabral 68 · gratuidade do atendimento a confirmar |
+| **PE** | Grupo Espírita Amor ao Próximo (GEAP) | Jaboatão dos Guararapes | endereço a confirmar |
+| **PE** | NEFA — Núcleo Espírita Francisco de Assis | Paulista | endereço a confirmar |
+| **GO** | Centro Espírita Meimei | Goiânia | endereço a confirmar |
+| **SC** | Sociedade Espírita Samaritanos de Maria | Joinville | endereço a confirmar |
+
+> ⚠️ **Atenção na verificação:** FEAL e AFA aparecem com forte presença online e vínculo com cursos — o princípio do movimento é que o **atendimento espiritual** seja gratuito (venda de livros/cursos de formação dentro da casa é outra coisa). Confirmar esse ponto antes de promover a RECOMENDADA.
+
+**Reservas ainda não postadas** (nas listas, sem dados suficientes ou para próximo lote): GO (Comunidade Espírita Ramatis, Centro Espiritualista Boa Nova — Goiânia), PE (Centro Espírita Trabalhadores da Hora — Olinda; Grupo Espírita Esperança — Camaragibe), SC (vários em Joinville, Lages, Florianópolis), RJ (Cabana do Pai Miguel, GAR — Grupo de Apometria Ramatis), PR (Casa Espírita Luiz Picelli — Maringá; Núcleo Espírita Universitário — Londrina).
+
+## Estados ainda sem dados (buscar ativamente)
+
+**BA, CE, ES, MA, AM, RO, RR, AC, AP, TO, AL, SE, PI** — nem os diretórios nem as buscas por estado trouxeram casas apométricas confirmadas. Pistas parciais: em Fortaleza (CE) e Belém (PA) há centros espíritas grandes (Casa do Caminho, C.E. Allan Kardec) mas sem menção clara a Apometria. Caminhos: federações espíritas estaduais, grupos de WhatsApp/Facebook da comunidade apométrica, e indicação das casas já verificadas (rede de confiança).
+
+## Fontes do 2º lote
+
+- [Casas Apométricas no Brasil — ceaksjbv (Wix)](https://phdtecno.wixsite.com/ceaksjbv/apometriabr)
+- [Portal Luz Espírita — mapa de centros](https://www.luzespirita.org.br/index.php?lisPage=mapa)
+- Sites das casas: [GATE Jundiaí](https://apometriajundiai.com.br/), [FEAL](https://fealapometria.com/), [AFA](https://afa.org.br/)
 
 ## Fontes
 
