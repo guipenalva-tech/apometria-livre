@@ -81,13 +81,26 @@
     }
 
     // Filtros do diretório: País › Estado › Cidade (em cascata) + busca por texto.
-    // Quando nada é encontrado, mostra o card de inscrição (#card-inscricao).
+    // O seletor de Estado lista TODAS as UFs do Brasil — inclusive as que ainda
+    // não têm casa mapeada — para que o visitante veja um feedback claro de
+    // "sem resultado" no seu estado, em vez de a UF simplesmente não existir.
     var busca = document.querySelector('#busca-inst');
     var selPais = document.querySelector('#filtro-pais');
     var selEstado = document.querySelector('#filtro-estado');
     var selCidade = document.querySelector('#filtro-cidade');
     if (busca && selPais && selEstado && selCidade) {
       var cartoes = Array.prototype.slice.call(document.querySelectorAll('.inst-cartao'));
+
+      // Todas as 27 UFs (sigla → nome) para popular o seletor e nomear o feedback
+      var UFS = {
+        AC: 'Acre', AL: 'Alagoas', AP: 'Amapá', AM: 'Amazonas', BA: 'Bahia',
+        CE: 'Ceará', DF: 'Distrito Federal', ES: 'Espírito Santo', GO: 'Goiás',
+        MA: 'Maranhão', MT: 'Mato Grosso', MS: 'Mato Grosso do Sul', MG: 'Minas Gerais',
+        PA: 'Pará', PB: 'Paraíba', PR: 'Paraná', PE: 'Pernambuco', PI: 'Piauí',
+        RJ: 'Rio de Janeiro', RN: 'Rio Grande do Norte', RS: 'Rio Grande do Sul',
+        RO: 'Rondônia', RR: 'Roraima', SC: 'Santa Catarina', SP: 'São Paulo',
+        SE: 'Sergipe', TO: 'Tocantins'
+      };
 
       function valoresUnicos(attr, restricoes) {
         var lista = [];
@@ -101,7 +114,7 @@
         return lista.sort();
       }
 
-      function preencher(select, valores, rotuloTodos) {
+      function preencher(select, valores, rotuloTodos, rotulos) {
         var anterior = select.value;
         select.innerHTML = '';
         var todos = document.createElement('option');
@@ -111,16 +124,29 @@
         valores.forEach(function (v) {
           var o = document.createElement('option');
           o.value = v;
-          o.textContent = v;
+          o.textContent = rotulos ? rotulos[v] || v : v;
           select.appendChild(o);
         });
         if (valores.indexOf(anterior) >= 0) select.value = anterior;
       }
 
+      function ufsOrdenadas() {
+        return Object.keys(UFS).sort(function (a, b) {
+          return UFS[a].localeCompare(UFS[b], 'pt-BR');
+        });
+      }
+
       function reconstruirOpcoes() {
         preencher(selPais, valoresUnicos('pais', {}), 'País: todos');
-        preencher(selEstado, valoresUnicos('estado', { pais: selPais.value }), 'Estado: todos');
+        preencher(selEstado, ufsOrdenadas(), 'Estado: todos', UFS);
         preencher(selCidade, valoresUnicos('cidade', { pais: selPais.value, estado: selEstado.value }), 'Cidade: todas');
+      }
+
+      function nomeDoLocal() {
+        if (selCidade.value) return selCidade.value;
+        if (selEstado.value) return UFS[selEstado.value] || selEstado.value;
+        if (busca.value.trim()) return '“' + busca.value.trim() + '”';
+        return '';
       }
 
       function aplicarFiltros() {
@@ -135,7 +161,25 @@
           if (ok) visiveis++;
         });
         var cardVazio = document.querySelector('#card-inscricao');
-        if (cardVazio) cardVazio.style.display = visiveis === 0 ? '' : 'none';
+        var msg = document.querySelector('#msg-sem-resultado');
+        if (visiveis === 0) {
+          if (msg) {
+            var local = nomeDoLocal();
+            var es = document.documentElement.lang === 'es';
+            if (local) {
+              msg.textContent = es
+                ? 'Todavía no mapeamos casas de Apometría en ' + local + '.'
+                : 'Ainda não mapeamos casas de Apometria em ' + local + '.';
+            } else {
+              msg.textContent = es
+                ? 'Ninguna casa encontrada con este filtro.'
+                : 'Nenhuma casa encontrada com este filtro.';
+            }
+          }
+          if (cardVazio) cardVazio.style.display = '';
+        } else if (cardVazio) {
+          cardVazio.style.display = 'none';
+        }
       }
 
       reconstruirOpcoes();
