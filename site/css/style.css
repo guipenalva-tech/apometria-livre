@@ -53,6 +53,11 @@ html { scroll-behavior: smooth; }
   outline-offset: 2px;
   border-radius: 4px;
 }
+/* Em botões-pílula, o anel de foco acompanha a forma (sem halo quadrado) */
+.btn:focus-visible, .btn-filtro:focus-visible, .btn-geo:focus-visible, .lang-toggle:focus-visible, .uf-tile:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.9), 0 0 0 6px var(--dourado);
+}
 
 /* Texto só para leitores de tela */
 .sr-oculto {
@@ -123,12 +128,19 @@ header.site {
 
 .botoes { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 .btn {
-  display: inline-block; padding: 13px 28px; border-radius: 30px;
-  text-decoration: none; font-weight: 600; font-size: 1rem; transition: transform .15s ease;
+  display: inline-block; padding: 13px 28px; border-radius: 30px; border: none;
+  text-decoration: none; font-weight: 600; font-size: 1rem; font-family: var(--sans);
+  cursor: pointer; transition: transform .15s ease, box-shadow .15s ease;
 }
 .btn:hover { transform: translateY(-2px); }
-.btn-ouro { background: var(--dourado-claro); color: var(--azul-900); }
-.btn-vazado { border: 2px solid var(--azul-100); color: var(--branco); }
+.btn:active { transform: translateY(0); }
+.btn-ouro {
+  background: linear-gradient(180deg, var(--dourado-claro), var(--dourado));
+  color: var(--azul-900);
+  box-shadow: 0 2px 8px rgba(22, 33, 62, 0.28);
+}
+.btn-ouro:hover { box-shadow: 0 6px 16px rgba(22, 33, 62, 0.35); }
+.btn-vazado { border: 2px solid var(--azul-100); color: var(--branco); background: transparent; }
 
 /* ---------- Seções ---------- */
 section.bloco { padding: 64px 0; }
